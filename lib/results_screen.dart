@@ -16,6 +16,7 @@ class _ResultState extends State<Result> {
           title: Text('BMI Calculator'),
         ),
         body: Container(
+          width: double.infinity,
           child: Column(
             children: [
               Padding(
@@ -30,7 +31,9 @@ class _ResultState extends State<Result> {
               ),
               Expanded(
                 child: ReusableCard(
+                  colour: kWidgetBackgroundColor,
                   cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
                         'Normal',
@@ -39,14 +42,15 @@ class _ResultState extends State<Result> {
                           fontSize: 20,
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
                       Text(
                         '22.1',
                         style: kLabelNumberStyle.copyWith(
                           fontSize: 70,
                         ),
+                      ),
+                      Text(
+                        'Yolo Yolo hu hu..',
+                        style: kLabelTextStyle,
                       ),
                     ],
                   ),
