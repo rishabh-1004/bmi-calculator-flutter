@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
 import 'icon_content.dart';
 import 'ResuableCard.dart';
+import 'results_screen.dart';
+import 'bottom_Button.dart';
 
 enum Gender {
   male,
@@ -206,19 +208,12 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            height: 70,
-            width: double.infinity,
-            margin: EdgeInsets.only(top: 15.0),
-            color: kBottomButtonColor,
-            child: Center(
-              child: Text(
-                'Calculate your BMI',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
+          BottomButton(
+            onCardTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Result()));
+            },
+            displayText: 'Calculate your BMI',
           )
         ],
       ),
