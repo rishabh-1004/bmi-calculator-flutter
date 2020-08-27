@@ -1,14 +1,18 @@
 import 'package:bmi_calculator/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:bmi_calculator/ResuableCard.dart';
-import 'bottom_Button.dart';
+import 'file:///D:/AndroidStudioProjects/bmi-calculator-flutter/lib/customWidgets/ResuableCard.dart';
+import '../customWidgets/bottom_Button.dart';
 
-class Result extends StatefulWidget {
-  @override
-  _ResultState createState() => _ResultState();
-}
+class ResultPage extends StatelessWidget {
+  final String result;
+  final String bmiValue;
+  final String display_message;
 
-class _ResultState extends State<Result> {
+  const ResultPage(
+      {@required this.result,
+      @required this.bmiValue,
+      @required this.display_message});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,20 +40,20 @@ class _ResultState extends State<Result> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
-                        'Normal',
+                        result.toUpperCase(),
                         style: kLabelTextStyle.copyWith(
                           color: Colors.green,
                           fontSize: 20,
                         ),
                       ),
                       Text(
-                        '22.1',
+                        bmiValue,
                         style: kLabelNumberStyle.copyWith(
                           fontSize: 70,
                         ),
                       ),
                       Text(
-                        'Yolo Yolo hu hu..',
+                        display_message,
                         style: kLabelTextStyle,
                       ),
                     ],
@@ -58,9 +62,13 @@ class _ResultState extends State<Result> {
               ),
               BottomButton(
                 displayText: 'Recalculate BMI',
+                onCardTap: () {
+                  Navigator.pop(context);
+                },
               )
             ],
           ),
         ));
+    ;
   }
 }

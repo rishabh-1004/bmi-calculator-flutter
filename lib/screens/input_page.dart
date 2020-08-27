@@ -1,10 +1,11 @@
+import 'package:bmi_calculator/screens/results_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constants.dart';
-import 'icon_content.dart';
-import 'ResuableCard.dart';
-import 'results_screen.dart';
-import 'bottom_Button.dart';
+import '../constants.dart';
+import '../customWidgets/icon_content.dart';
+import '../customWidgets/ResuableCard.dart';
+import '../customWidgets/bottom_Button.dart';
+import '../BMIBrain.dart';
 
 enum Gender {
   male,
@@ -110,8 +111,8 @@ class _InputPageState extends State<InputPage> {
                           selectedHeight = newValue.toInt();
                         });
                       },
-                      min: 120,
-                      max: 180,
+                      min: 150,
+                      max: 200,
                     ),
                   )
                 ],
@@ -210,8 +211,18 @@ class _InputPageState extends State<InputPage> {
           ),
           BottomButton(
             onCardTap: () {
+              CalculateBMI bmi =
+                  CalculateBMI(height: selectedHeight, weight: selectedWeight);
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Result()));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultPage(
+                    result: bmi.getResult(),
+                    display_message: bmi.getComment(),
+                    bmiValue: bmi.getBMI(),
+                  ),
+                ),
+              );
             },
             displayText: 'Calculate your BMI',
           )
